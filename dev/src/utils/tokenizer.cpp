@@ -26,6 +26,7 @@ TODO: [ -:Not done, +:In progress, !:Completed]
 #include <stdlib.h>
 #include <vector>
 #include <string>
+#include <string.h>
 
 #include "tokenizer.h"
 
