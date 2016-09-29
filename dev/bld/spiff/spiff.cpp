@@ -187,6 +187,7 @@ static std::string fload(const char *filename) {
 	int bytes = fread(buffer, 1, sz, f);
 	buffer[bytes]='\0';
 	fclose(f);
+	pLogger->Debug("Loading complete\n");
 	return std::string(buffer);		
 
 }
