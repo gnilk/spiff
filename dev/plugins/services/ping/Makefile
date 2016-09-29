@@ -14,7 +14,6 @@ NXCORE_SRC_DIR = $(ROOT)/src
 NXCORE_INC_DIR = $(ROOT)/inc
 
 CFLAGS = -g -arch x86_64 -stdlib=libc++ -std=c++11
-#CFLAGS += -macosx_version_min 10.8
 CFLAGS += -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk
 CFLAGS += -I/opt/local/include -I/usr/local/include  -I$(NXCORE_INC_DIR)
 
