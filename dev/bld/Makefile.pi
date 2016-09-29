@@ -49,7 +49,7 @@ PLUGINS_DIRS = \
 
 
 INCLUDE_FILES = -I/opt/local/include -I/usr/local/include -I. -I$(INC_DIR) -I$(NXCORE_INC)
-LIB_FILES = -framework Cocoa -framework IOKit -framework CoreVideo -L/opt/local/lib
+LIB_FILES = -L/opt/local/lib -ldl
 
 CFLAGS = 
 CPPFLAGS = 
@@ -77,17 +77,17 @@ CFLAGS += $(INCLUDE_FILES)
 
 
 # Linker settings
-LD = clang++
+LD = clang++ 
 #LDFLAGS =  -dynamiclib -arch x86_64 -stdlib=libc++
-LDFLAGS = -dynamiclib
+LDFLAGS = -shared
 LDFLAGS += $(LIB_FILES)
 
 
 
 #LINK_LIBS += -framework Cocoa -framework SystemConfiguration
 NP_LINK_LIBS = 
-NXCORE_LINK_LIBS += -L. -lutils
-MAIN_LINK_LIBS += $(LIB_FILES) -L. -lnxcore -lutils
+NXCORE_LINK_LIBS += -L. -lutils -ldl
+MAIN_LINK_LIBS += $(LIB_FILES) -L. -lnxcore -lutils -ldl
 BASS_LIB = $(BASS_DIR)/libbass.dylib
 
 CONAPP_SRC_FILES = \
@@ -134,7 +134,7 @@ TT_OBJ_FILES := $(patsubst %.cpp,%.o,$(TT_SRC_FILES))
 HAL_OBJ_FILES := $(patsubst %.cpp,%.o,$(HAL_SRC_FILES))
 
 # Default: Build all tests
-all: utils nxcore conapp spiff tt hal plugins
+all: utils nxcore conapp spiff tt plugins
 
 .PHONY: plugins $(PLUGINS_DIRS)
 
