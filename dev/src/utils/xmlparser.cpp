@@ -27,7 +27,6 @@ TODO: [ -:Not done, +:In progress, !:Completed]
 #include "xmlparser.h"          
 #include <string.h>
 
-#define _DEBUG
 
 using namespace gnilk::xml;
 
