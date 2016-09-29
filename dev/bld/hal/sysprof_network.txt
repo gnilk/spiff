@@ -1,0 +1,104 @@
+Network:
+
+    Bluetooth DUN:
+
+      Type: PPP (PPPSerial)
+      Hardware: Modem
+      BSD Device Name: Bluetooth-Modem
+      IPv4:
+          Configuration Method: PPP
+      IPv6:
+          Configuration Method: Automatic
+      Proxies:
+          FTP Passive Mode: Yes
+      Service Order: 0
+
+    Wi-Fi:
+
+      Type: AirPort
+      Hardware: AirPort
+      BSD Device Name: en0
+      IPv4:
+          Configuration Method: DHCP
+      IPv6:
+          Configuration Method: Automatic
+      Ethernet:
+          MAC Address: 20:c9:d0:84:cb:c7
+          Media Options: 
+          Media Subtype: Auto Select
+      Proxies:
+          Exceptions List: *.local, 169.254/16
+          FTP Passive Mode: Yes
+      Service Order: 1
+
+    iPhone:
+
+      Type: Ethernet
+      Hardware: Ethernet
+      BSD Device Name: en4
+      IPv4:
+          Configuration Method: DHCP
+      IPv6:
+          Configuration Method: Automatic
+      Proxies:
+          Exceptions List: *.local, 169.254/16
+          FTP Passive Mode: Yes
+      Service Order: 2
+
+    HUAWEI Mobile:
+
+      Type: Ethernet
+      Hardware: Ethernet
+      BSD Device Name: en5
+      IPv4:
+          Configuration Method: DHCP
+      IPv6:
+          Configuration Method: Automatic
+      Proxies:
+          Exceptions List: *.local, 169.254/16
+          FTP Passive Mode: Yes
+      Service Order: 3
+
+    Bluetooth PAN:
+
+      Type: Ethernet
+      Hardware: Ethernet
+      BSD Device Name: en3
+      IPv4:
+          Configuration Method: DHCP
+      IPv6:
+          Configuration Method: Automatic
+      Proxies:
+          Exceptions List: *.local, 169.254/16
+          FTP Passive Mode: Yes
+      Service Order: 4
+
+    Thunderbolt Bridge:
+
+      Type: Ethernet
+      Hardware: Ethernet
+      BSD Device Name: bridge0
+      IPv4:
+          Configuration Method: DHCP
+      IPv6:
+          Configuration Method: Automatic
+      Proxies:
+          Exceptions List: *.local, 169.254/16
+          FTP Passive Mode: Yes
+      Service Order: 5
+
+    Huawei Modem:
+
+      Type: PPP (PPPSerial)
+      Hardware: Modem
+      BSD Device Name: HUAWEIMobile-Modem
+      IPv4:
+          Configuration Method: PPP
+      IPv6:
+          Configuration Method: Automatic
+      Proxies:
+          Exclude Simple Hostnames: 0
+          FTP Passive Mode: Yes
+          Auto Discovery Enabled: No
+      Service Order: 6
+

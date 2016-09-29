@@ -1,0 +1,15 @@
+<script>
+	<track>
+		<while count="2">
+			<service name="parameters" class="Utils.Container">
+				<parameter name="host_for_ping">wwww.microsoft.com</parameter>
+			</service>
+			<service name="ping1" class="ExampleService">
+				<parameter name="host">www.google.com</parameter>
+			</service>
+			<service name="ping2" class="ExampleService">
+				<parameter name="host" bind="parameters.host_for_ping" />
+			</service>
+		</while>
+	</track>
+</script>

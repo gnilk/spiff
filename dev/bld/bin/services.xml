@@ -1,0 +1,25 @@
+<xml>
+	<service name="DataServices.Ping">
+		<description>sends icmp packets on the network</description>
+		<input>
+			<parameter name="host" display="Host" type="string" default="127.0.0.1" description="name or ip for host to ping" />
+			<parameter name="packetsize" display="Packet Size" type="int" default="128" description="number of bytes per packet" />
+			<parameter name="frag" display="Allow fragmentation" type="bool" default="false" description="allow IP fragmentation" />
+			<parameter name="packets" display="Packets" type="int" default="3" description="Number of packets" />
+			<parameter name="timeout" display="Timeout per packet" type="float" default="5" description="Maxmimum time (in seconds) to wait for a response per ping packet" />
+			<parameter name="ttl" display="Packet Time To Live" type="int" default="128" description="Maxmimum time (in seconds) to wait for a response per ping packet" />
+		</input>
+		<output>
+		</output>
+	</service>
+	<service name="DataServices.Traceroute">
+		<description>records the network route to a host</description>
+		<input>
+			<parameter name="host" display="Host" type="string" default="127.0.0.1" description="name or ip for destination host" />
+			<parameter name="packetsize" display="Packet Size" type="int" default="128" description="number of bytes per packet" />
+			<parameter name="timeout" display="Timeout per packet" type="float" default="5" description="Maxmimum time (in seconds) to wait for a response per packet" />
+		</input>
+		<output>
+		</output>
+	</service>
+</xml>

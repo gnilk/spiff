@@ -1,0 +1,113 @@
+Config
+ServiceManager.URI=pipe://named
+ServiceManager.URI=http://localhost:8080
+
+
+
+
+
+
+
+
+
+
+
+DiscoveryService Interface
+	RegisterProvider(location, class, cabilities, dependencies);
+
+Implementation:
+	void RegisterProvider(string location) {
+		IServiceManager &serviceManager = ServiceManager::GetInstance();
+		serviceManager.RegisterServiceProvider(location);
+	}
+
+	IServiceManager &ServiceManager::GetInstance() {
+		Configuration &config = Configuration::GetInstance();
+		string location = config.Resolve("ServiceManager.Uri",NULL);
+		if (location == NULL) {
+			location = "default://";
+		} 
+		URI &uri = URI::FromString(location);			
+		return ServiceManager::Factory(uri.GetProtocol());
+	}
+
+	IServiceManager &ServiceManager::Factory(string transport) {
+		if (transport == "pipe") {
+			return new ServiceManagerPipeProxy();
+		}
+		if (transport = "http") {
+			return new ServiceManagerHttpProxy();
+		}
+	}
+
+
+	// This is actually always a proxy
+	ServiceManagerPipeProxy::RegisterServiceProvider(xyz) {
+		DoConnect();
+		DoRegisterServiceProvider(provider);
+	}
+
+
+
+Classes:
+
+	* Consumers
+		- Reciever of data
+			* Persistance
+			* User Interface
+			* Alarming
+
+
+	* Producers
+		* Passive
+			- Instance that generates data according to some setting once enabled
+				* Scanner
+				* L3 
+		* Active
+			- Instance that actively test something
+				* IP Test
+				* Voice
+				* Video
+
+	* Enablers	[bad name]
+		* Transport
+			- Interface that provides an underlying transport for a test
+				* Data connectivity (PDP Context)
+				* Video connectivity
+				* Voice connectivity
+				* Messaging
+
+
+
+Example, mini-card:
+	RegisterService("localhost/api/data/v1", Transport, Data, NO_DEP);
+	RegisterService("localhost/api/messaging/v1", Transport, Messaging, NO_DEP);
+
+
+	RegisterService("localhost/api/test/ping", TestFunction, <..>, {Transport:Data});
+	RegisterService("localhost/api/test/volte", TestFunction, <..>, {Transport:Voice, Transport:LTE});
+
+
+Dependency example:
+	class, capability
+		Transport, Data
+		Transport, Voice
+
+
+Device Capabilities
+	<capabilities>
+		<transport>
+			<lte/>
+			<voice>
+				<VoLTE>
+				<csfb>
+			</voice>
+			<data>
+				<ip_v4 />
+				<ip_v6 />
+			</data>
+		</transport>
+	</capabilites>
+
+
+
