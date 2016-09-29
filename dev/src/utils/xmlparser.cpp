@@ -137,7 +137,7 @@ void Parser::commitTag(Tag *pTag)
   }
   // Only store in hierarchy if we are building a 'DOM' tree
   if (parseMode == pmDOMBuild) {
-    tagStack.top()->addChild(pTag);
+   tagStack.top()->addChild(pTag);
   }
   tagStack.push(pTag);
 }
@@ -150,7 +150,7 @@ void Parser::enterNewState()
 }
 
 void Parser::parseData() {
-  char c;
+  int c;
   std::string attrName = "";
   std::string attrValue = "";
   std::string token = "";
@@ -734,7 +734,7 @@ void ParseStateFunc::stateDTDDocTypeContent(char c) {
 }
 
 void ParseStateFunc::parseData() {
-  char c;
+  int c;
   tagStack.push(root);
   while((c=nextChar())!=EOF) {
     switch(state) 
@@ -1051,7 +1051,7 @@ void ParseStateClasses::initialize(std::string _data, IParseEvents *pEventHandle
 
 void ParseStateClasses::parseData()
 {
-  char c;
+  int c;
   tagStack.push(root);
   while((c=nextChar())!=EOF) {
     if (pState != NULL) {
