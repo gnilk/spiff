@@ -22,7 +22,7 @@ CFLAGS += -I/opt/local/include -I/usr/local/include  -I$(NXCORE_INC_DIR)
 # Linker settings
 LD = clang++
 LDFLAGS =  -dynamiclib -arch x86_64 -stdlib=libc++
-LDFLAGS += -framework Cocoa -L../../../bld/con -lutils
+LDFLAGS += -framework Cocoa -L../../../bld -lutils
 
 
 PLUGIN_NAME_LIB = lib$(PLUGIN_NAME).dylib
