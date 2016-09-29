@@ -45,7 +45,8 @@ PLUGINS =
 PLUGINS_DIRS = \
 	$(SERVICES_SRC_DIR)/example \
 	$(SERVICES_SRC_DIR)/ping 	\
-	$(SERVICES_SRC_DIR)/ftp 	\
+
+#	$(SERVICES_SRC_DIR)/ftp 	\
 
 
 INCLUDE_FILES = -I/opt/local/include -I/usr/local/include -I. -I$(INC_DIR) -I$(NXCORE_INC)
@@ -168,7 +169,7 @@ utils: $(UTILS_OBJ_FILES)
 ## - compile all plugins by calling recursive make's
 plugins: $(PLUGINS_DIRS) utils
 $(PLUGINS_DIRS):
-	$(MAKE) -C $@ PLUGIN_NAME=$(@F)
+	$(MAKE) -f Makefile.pi -C $@ PLUGIN_NAME=$(@F)
 	cp $@/lib$(@F).dylib $(PLUGIN_DEST_DIR)
 
 clean: cleanspiff cleanconapp cleanutils cleannxcore cleanplugins
