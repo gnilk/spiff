@@ -177,9 +177,12 @@ static std::string fload(const char *filename) {
 	FILE *f = fopen(filename,"rb");
 	if (f == NULL)
 	{
+		pLogger->Error("can't find file: %s\n", filename);
+		exit(1);
 		return std::string("");		
 	}
 	long sz = fsize(f);
+	pLogger->Debug("Loading %s of size %d\n", filename, sz);
 	char *buffer = (char *)malloc(sz+1);
 	int bytes = fread(buffer, 1, sz, f);
 	buffer[bytes]='\0';
