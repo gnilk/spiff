@@ -694,8 +694,8 @@ void Logger::WriteReportString(int mc, char *string)
 	tid = GetCurrentThreadId();	
 	snprintf(sHdr, MAX_INDENT + 64, "%s [%.8x] %8s %32s - %s", sTime, tid, sLevel, sName, sIndent);
 #else
-	void *tid = NULL;
-	tid = pthread_self();	
+	//void *tid = NULL;
+	pthread_t tid = pthread_self();	
 	snprintf(sHdr, MAX_INDENT + 64, "%s [%p] %8s %32s - %s", sTime, tid, sLevel, sName, sIndent);
 #endif
 	Logger::SendToSinks((int)mc,sHdr, string);
