@@ -591,6 +591,15 @@ namespace Script {
 		std::string typeClass;
 	};
 
+	class EquipmentControlNode : public Node {
+	public:
+		EquipmentControlNode();
+		static EquipmentControlNode *CreateEquipmentFromXML(ITag *tag);
+	private:
+		std::string name;
+		std::string deviceId;
+	};
+
 	class Track : public Node {
 	public:
 		Track();

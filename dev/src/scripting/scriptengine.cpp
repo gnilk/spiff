@@ -175,6 +175,33 @@ void ServiceControlNode::Execute() {
 	}
 }
 
+EquipmentControlNode::EquipmentControlNode() {
+
+}
+
+EquipmentControlNode *EquipmentControlNode::CreateEquipmentFromXML(ITag *tag) {
+	EquipmentControlNode *node = NULL;
+
+	std::string name = tag->getAttributeValue("name","");
+	std::string deviceId = tag->getAttributeValue("device","");
+
+	if (deviceId.empty()) {
+		Logger::GetLogger("ScriptEngine")->Error("Equipment has empty ID for Device named '%s'",name.c_str());
+		exit(1); // TODO: Raise error properly
+	}
+
+	Logger::GetLogger("ScriptEngine")->Debug("Got Equipment '%s' for device '%s'", name.c_str(), deviceId.c_str());
+
+	node = new EquipmentControlNode();
+	node->name = name;
+	node->deviceId = deviceId;
+
+	return node;
+}
+
+
+
+
 
 //
 // class track
@@ -281,6 +308,9 @@ void ScriptEngine::OnDefinitionTagDataStart(ITag *tag, std::list<IAttribute *>&a
 	} else if (tag->getName() == "while") {
 		WhileControlNode *node = WhileControlNode::CreateWhileFromXML(tag);
 		control->PushControlNode(node);
+	} else if (tag->getName() == "equipment") {
+		EquipmentControlNode *node = EquipmentControlNode::CreateEquipmentFromXML(tag);
+		control->AddNode(node);	// Add this node, to current control node
 	}
 }
 
@@ -294,6 +324,7 @@ void ScriptEngine::OnDefinitionTagDataEnd(ITag *tag, std::list<IAttribute *>&att
 		Logger::GetLogger("ScriptEngine")->Debug("pop while");	
 		control->PopControlNode();
 		Logger::GetLogger("ScriptEngine")->Debug("pop while");	
+	} else if (tag->getName() == "equipment") {
 	}
 }
 
