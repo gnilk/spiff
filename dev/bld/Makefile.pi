@@ -84,7 +84,7 @@ LDFLAGS += $(LIB_FILES)
 
 
 
-LINK_LIBS += -framework Cocoa -framework SystemConfiguration
+#LINK_LIBS += -framework Cocoa -framework SystemConfiguration
 NP_LINK_LIBS = 
 NXCORE_LINK_LIBS += -L. -lutils
 MAIN_LINK_LIBS += $(LIB_FILES) -L. -lnxcore -lutils
