@@ -144,6 +144,7 @@ static void InitializeServiceManager(ObjectContainer *container) {
 
 	pLogger->Info("Loading service definitions from '%s'", glb_serviceDefFileName.c_str());
 	std::string serviceDef = fload(glb_serviceDefFileName.c_str());	
+	pLogger->Info("Calling Service Manager\n");
 	sm->LoadServiceDefinitions(serviceDef);
 
 	pLogger->Info("Scanning plugins and registering services");

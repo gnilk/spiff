@@ -33,6 +33,7 @@ void ServiceManager::LoadServices() {
 }
 
 void ServiceManager::LoadServiceDefinitions(std::string definitiondata) {
+	Logger::GetLogger("ServiceManager")->Debug("Parsing XML");
 	Document *doc = Parser::loadXML(definitiondata);
 	Logger::GetLogger("ServiceManager")->Debug("Adding service definitions");
 	doc->traverse(
